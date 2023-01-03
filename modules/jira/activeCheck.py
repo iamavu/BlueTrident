@@ -7,9 +7,6 @@ from colorama import Fore, Back, Style
 
 from ..support.args import parser
 
-CURSOR_UP = '\033[F'
-ERASE_LINE = '\033[K'
-
 class ActiveJira:
     def __init__(self):
         args = parser()
@@ -161,6 +158,6 @@ class ActiveJira:
         
         if b'jiraGroupObjects' in response.content and response.status_code == 200:
             print("CVE-2022-39960" + Fore.YELLOW + "\t\t" + "MEDIUM" + Style.RESET_ALL + "\t\t" + f"{poc}")
-
+   
 if __name__ == '__main__':
     ActiveJira()
